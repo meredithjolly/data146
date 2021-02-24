@@ -18,5 +18,6 @@ data = pd.read_csv('gapminder.tsv', sep = '\t')
 
 ```
 And here is what the dataframe I created looks like:
+[gapminder dataframe](Screen Shot 2021-02-23 at 9.01.13 PM.png)
 
 
