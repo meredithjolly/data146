@@ -19,6 +19,7 @@ data = pd.read_csv('gapminder.tsv', sep = '\t')
 ```
 And here is what the dataframe I created looks like: 
 ![gapminder dataframe](https://meredithjolly.github.io/data146/gapminder_dataframe.png) 
+
 To determine how many rows and columns are in my dataframe:
 ```
 
@@ -69,6 +70,9 @@ To order the subset from highest to lowest:
 new.sort_values(by = ['gdp'], ascending = False)
 
 ```
-Here is a screenshot: of the result
+Here is a screenshot of the result:
+![gapminder dataframe](https://meredithjolly.github.io/data146/gapminder_subset.png)
+
+
 
 
