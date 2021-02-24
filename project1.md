@@ -18,8 +18,57 @@ data = pd.read_csv('gapminder.tsv', sep = '\t')
 
 ```
 And here is what the dataframe I created looks like: 
-![gapminder dataframe](https://meredithjolly.github.io/data146/gapminder_dataframe.png)
+![gapminder dataframe](https://meredithjolly.github.io/data146/gapminder_dataframe.png) 
+To determine how many rows and columns are in my dataframe:
+```
 
+data.shape
 
+```
+An alternative name for a row is an observation, and an alternative name for a column is a variable. 
+### Import the gapminder.tsv data set and create a new data frame. Interrogate and describe the year variable within the data frame you created. Does this variable exhibit regular intervals? If you were to add new outcomes to the raw data in order to update and make it more current, which years would you add to each subset of observations? Stretch goal: can you identify how many new outcomes in total you would be adding to your data frame?
+To see what years are included in the dataframe:
+```
+
+data['year'].unique()
+
+```
+There are 12 different years in the dataframe. The years start from 1952 and end with 2007. The years increase in intervals of 5. To make the dataframe up to date, I would add data from the years 2012 and 2017. There are 142 different countries in the dataframe so if I added data for those two years for every country, there would be 284 new rows. 
+### Using the data frame you created by importing the gapminder.tsv data set, determine which country at what point in time had the lowest life expectancy. Conduct a cursory level investigation as to why this was the case and provide a brief explanation in support of your explanation.
+To see what the lowest value was for life expectancy and then to determine the country and year:
+```
+
+data['lifeExp'].min()
+data.loc[data['lifeExp'] == 23.599]
+
+```
+The lowest life expectancy was 23.599 years and this occured in Rwanda in 1992. One possible reason for this was that 1992 was right in the middle of the Rwandan Civil War. 
+### Using the data frame you created by importing the gapminder.tsv data set, multiply the variable pop by the variable gdpPercap and assign the results to a newly created variable. Then subset and order from highest to lowest the results for Germany, France, Italy and Spain in 2007. Create a table that illustrates your results (you are welcome to either create a table in markdown or plot/save in PyCharm and upload the image). Stretch goal: which of the four European countries exhibited the most significant increase in total gross domestic product during the previous 5-year period (to 2007)?
+To multiply the variable pop by the variable gdpPercap and add this to the dataframe as a new column:
+```
+
+i = 0
+gdp = []
+for pop in data['pop']:
+    a = (pop * (data['gdpPercap'].iloc[i]))
+    gdp.append(a)
+    i += 1 
+data['gdp'] = gdp
+
+```
+To select a subset of the dataframe:
+```
+
+countries = ['Germany', 'France', 'Italy', 'Spain']
+new = data.loc[(data['year'] == 2007) & data['country'].isin(countries)]
+
+```
+To order the subset from highest to lowest:
+```
+
+new.sort_values(by = ['gdp'], ascending = False)
+
+```
+Here is a screenshot: of the result
 
 
