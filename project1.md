@@ -17,7 +17,9 @@ A dataframe is a two-dimensional structure that contains rows, columns and data.
 data = pd.read_csv('gapminder.tsv', sep = '\t')
 
 ```
-And here is what the dataframe I created looks like:
-[gapminder dataframe](Screen Shot 2021-02-23 at 9.01.13 PM.png)
+And here is what the dataframe I created looks like: 
+![gapminder dataframe](https://meredithjolly.github.io/data146/gapminder_dataframe.png)
+
+
 
 
