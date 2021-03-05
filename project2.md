@@ -56,4 +56,7 @@ Here is the left skewed plot:
 ![left skewed](https://meredithjolly.github.io/data146/prj2_3.png) 
 
 The mean for the left skewed plot is 0.666 and the median is 0.760
+### Using the gapminder data set, produce two overlapping histograms within the same plot describing life expectancy in 1952 and 2007. Plot the overlapping histograms using both the raw data and then after applying a logarithmic transformation (np.log10() is fine). Which of the two resulting plots best communicates the change in life expectancy amongst all of these countries from 1952 to 2007?
+Here is the histogram showing the life expectancy in 1952 and 2007:
+![life exp](https://meredithjolly.github.io/data146/prj2_4.png)
 
