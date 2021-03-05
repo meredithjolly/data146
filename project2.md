@@ -62,3 +62,5 @@ Here is the histogram showing the life expectancy in 1952 and 2007:
 
 Here is the histogram with the logarithmic transformation:
 ![life exp log](https://meredithjolly.github.io/data146/prj2_5.png)
+
+
