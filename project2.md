@@ -16,4 +16,26 @@ b = 5
 data = np.random.beta(a, b, size=n)
 
 ```
+Here is the plot that has a mean that approximates the 50th percentile:
+![gapminder dataframe](https://meredithjolly.github.io/data146/prj2_1.png) 
+
+The mean for the plot above is 0.502 and the median is 0.499
+
+To produce a right skewed plot:
+```
+n = 1000
+a = 0.5
+b = 1
+#np.random.seed(10)
+rightskew = np.random.beta(a, b, size=n)
+
+plt.figure(figsize = (8, 8))
+plt.hist(rightskew, rwidth = 0.8)
+plt.show()
+
+```
+Here is the right skewed plot:
+![gapminder dataframe](https://meredithjolly.github.io/data146/prj2_2.png) 
+
+The mean for the right skewed plot is 0.323 and the median is 0.242
 
