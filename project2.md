@@ -3,4 +3,17 @@ Continuous data is data that can take on any value. It is a measurement so it ca
 
 Model example: Predicting satisfaction rating from a customer based on age, sex and income. The dependent variable (target) is satisfaction rating and the independent variables (features) are age, sex and income. Satisfaction rating and income are ordinal data. Age is continuous data and sex is nominal data. 
 ### Comment out the seed from your randomly generated data set of 1000 observations and use the beta distribution to produce a plot that has a mean that approximates the 50th percentile. Also produce both a right skewed and left skewed plot by modifying the alpha and beta parameters from the distribution. Be sure to modify the widths of your columns in order to improve legibility of the bins (intervals). Include the mean and median for all three plots.
+```
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 1000
+a = 5
+b = 5
+#np.random.seed(10)
+data = np.random.beta(a, b, size=n)
+
+```
 
