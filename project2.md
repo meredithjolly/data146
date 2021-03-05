@@ -39,3 +39,21 @@ Here is the right skewed plot:
 
 The mean for the right skewed plot is 0.323 and the median is 0.242
 
+To produce a left skewed plot:
+```
+n = 1000
+a = 1
+b = 0.5
+#np.random.seed(10)
+leftskew = np.random.beta(a, b, size=n)
+
+plt.figure(figsize = (8, 8))
+plt.hist(leftskew, rwidth = 0.8)
+plt.show()
+
+```
+Here is the left skewed plot:
+![left skewed](https://meredithjolly.github.io/data146/prj2_3.png) 
+
+The mean for the left skewed plot is 0.666 and the median is 0.760
+
