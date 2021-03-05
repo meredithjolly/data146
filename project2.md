@@ -60,3 +60,5 @@ The mean for the left skewed plot is 0.666 and the median is 0.760
 Here is the histogram showing the life expectancy in 1952 and 2007:
 ![life exp](https://meredithjolly.github.io/data146/prj2_4.png)
 
+Here is the histogram with the logarithmic transformation:
+![life exp log](https://meredithjolly.github.io/data146/prj2_5.png)
