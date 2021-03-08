@@ -63,4 +63,13 @@ Here is the histogram showing the life expectancy in 1952 and 2007:
 Here is the histogram with the logarithmic transformation:
 ![life exp log](https://meredithjolly.github.io/data146/prj2_5.png)
 
+The plot with the logarithmic transformation is a better representation of the change in life expectancy amongst all of the countries from 1952 to 2007. 
+### Using the seaborn library of functions, produce a box and whiskers plot of population for all countries at the given 5-year intervals. Also apply a logarithmic transformation to this data and produce a second plot. Which of the two resulting box and whiskers plots best communicates the change in population amongst all of these countries from 1952 to 2007?
+Here is the plot of population for all countries:
+![pop box and whiskers plot](https://meredithjolly.github.io/data146/prj2_6.png)
+
+Here is the plot of population for all countries with the logarithmic transformation:
+![pop log box and whiskers plot](https://meredithjolly.github.io/data146/prj2_7.png)
+
+The plot with the logarithmic transformation best communicates the change in population amongst all of the countries. 
 
