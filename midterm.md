@@ -197,11 +197,13 @@ plt.ylabel('Avg $R^2$')
 plt.show()
 
 ```
-
+### answers: 
 - rid_a_range[idx] = 25.8
 - rid_tr[idx] = 0.60627
 - rid_te[idx] = 0.60201 
 - rid_mse_tr[idx] = 0.52427
 - rid_mse_te[idx] = 0.52876
+
+
 
 
