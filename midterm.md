@@ -1,12 +1,12 @@
 # Midterm 
-## A. import the libraries you will need 
+## A. import necessary libraries
 ```
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
 ```
-## B. create your DoKFold
+## B. create DoKFold
 ```
 
 def DoKFold(model, X, y, k, standardize = False, random_state = 146):
@@ -78,6 +78,18 @@ y = data.target
 cal_housing = pd.DataFrame(X, columns = X_names)
 
 ```
-## 15
+## 15. which of the below features is most strongly correlated with the target?
+- MedInc (median income)
+- AveRooms (average number of rooms)
+- AveBedrms (average number of bedrooms)
+- HouseAg (average house age)
+```
+# create a data frame with all the features as well as the target
+housing_copy = cal_housing.copy()
+housing_copy['y'] = y
+# calculate correlations of all the variables
+housing_copy.corr()
+
+```
 
 
