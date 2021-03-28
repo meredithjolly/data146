@@ -336,6 +336,7 @@ plt.show()
 - las_te[idx] = 0.602133
 - las_mse_tr[idx] = 0.52442
 - las_mse_te[idx] = 0.52860
+![plot](https://meredithjolly.github.io/data146/midterm4.png)
 
 
 
