@@ -436,6 +436,7 @@ print('Testing score for this value: ' + format(avg_te_score[idx], '.3f'))
 again, I did not create a separate object for the MSE training and testing data. 
 
 I did not get much futher than that because I kept running into the same problems. The session this past Wednesday really helped because you went over exactly how to approach each problem. 
+
 In my many hours long struggle to try to find answers online to some of the problems I ran into, I did find some useful graphs and charts to produce. I believe we did create a heatmap in class, but one website I looked at was focusing on how to find correlation values. 
 I imported the seaborn library and ran this:
 ```
@@ -449,7 +450,7 @@ sns.heatmap(data=correlation_matrix, annot=True)
 This is the heatmap produced:
 ![plot](https://meredithjolly.github.io/data146/midterm5.png)
 
-
+I just think the heatmap was a cool way of looking at the correlation between features and targets. I got the same results in the heatmap as I did in the corrected midterm answers above (question 15).
 
 
 
