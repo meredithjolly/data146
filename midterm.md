@@ -307,12 +307,36 @@ plt.ylabel('Avg MSE')
 plt.show()
 
 ```
-### answers: 
+### answers: I got a slightly higher optimal value for alpha using MSE instead of R2 while doing ridge regression.
 - rid_a_range[idx] = 26.1
 - rid_tr[idx] = 0.60627
 - rid_te[idx] = 0.60201 
 - rid_mse_tr[idx] = 0.52427
 - rid_mse_te[idx] = 0.52876
+![plot](https://meredithjolly.github.io/data146/midterm3.png)
+
+## 24. If we had looked at MSE instead of R2 when doing Lasso regression (question 20), what would the optimal value for alpha be?
+```
+
+idx = np.argmin(las_mse_te)
+print(las_a_range[idx], las_tr[idx], las_te[idx], las_mse_tr[idx], las_mse_te[idx])
+
+```
+```
+
+plt.plot(las_a_range, las_mse_te,'or')
+plt.xlabel('$\\alpha$')
+plt.ylabel('Avg MSE')
+plt.show()
+
+```
+### answers: 
+- las_a_range[idx] = 0.00186
+- las_tr[idx] = 0.60616
+- las_te[idx] = 0.602133
+- las_mse_tr[idx] = 0.52442
+- las_mse_te[idx] = 0.52860
+
 
 
 
