@@ -62,7 +62,7 @@ from sklearn.datasets import fetch_california_housing as cal_data
 data = cal_data()
 
 ```
-## D. create dataframe
+## D. Create dataframe
 ```
 
 # set up X as your features from data.data
@@ -338,6 +338,115 @@ plt.show()
 - las_mse_te[idx] = 0.52860
 ![plot](https://meredithjolly.github.io/data146/midterm4.png)
 
+## Reflection:
+I struggled a lot with these questions on the midterm, and I think the main source of my confusion was with the MSE. My DoKFold ended with appending the model scores produced using the feature and target training and testing data to the training and testing scores object. That meant that later on, I was stuck trying to figure out how to predict the taget values with the training and testing data. This is how I was trying to find the predicted target values:
+```
+
+prices = Y
+predicted = y_pred
+
+summation = 0
+n = len(predicted)
+for i in range (0,n):
+  difference = prices[i] - predicted[i]
+  squared_difference = difference**2
+  summation = summation + squared_difference
+
+MSE = summation/n
+print ("The Mean Squared Error is: " , MSE)
+
+```
+It was producing a MSE of 0.61568. This was after I was playing around with it for a while, so I was trying various combinations of inputs after looking things up, but I was ultimately confused about the whole set up so I was never confident if it was the right output.
+
+To produce a ridge regression, I got stuck after not creating a separate object to append the calculated mean training and testing values, along with the MSE values from training and testing. Here is what I was trying to run: 
+```
+
+from sklearn.linear_model import Ridge
+
+a_range = np.linspace(20, 30, 101)
+
+k = 20
+
+avg_tr_score=[]
+avg_te_score=[]
+
+for a in a_range:
+    rid_reg = Ridge(alpha=a)
+    train_scores,test_scores = DoKFold(rid_reg,X,Y,k,standardize=True)
+    avg_tr_score.append(np.mean(train_scores))
+    avg_te_score.append(np.mean(test_scores))
+
+idx = np.argmax(avg_te_score)
+print('Optimal alpha value: ' + format(a_range[idx], '.3f'))
+print('Training score for this value: ' + format(avg_tr_score[idx],'.3f'))
+print('Testing score for this value: ' + format(avg_te_score[idx], '.3f'))
+
+```
+
+The outcome was:
+Optimal alpha value: 30.000
+Training score for this value: 0.538
+Testing score for this value:0.532
+so the alpha value was only about 5 off from what it should be, and the testing and training scores were close to the mean MSE values from the testing and training data, so I think I was trying to calculate the mean testing and training scores but ended up calculating the mean MSE values. 
+
+I tried to calculate the mean MSE values from the ridge testing and training data separately by running: 
+```
+
+prices = Y
+predicted = avg_te_score
+
+summation = 0
+n = len(predicted)
+for i in range (0,n):
+  difference = prices[i] - predicted[i]
+  squared_difference = difference**2
+  summation = summation + squared_difference
+
+MSE = summation/n
+print ("The Mean Squared Error is: " , MSE)
+
+```
+The result was:
+The Mean Squared Error is:  1.625559019495714
+which is not close to what the mean MSE value should be for the ridge testing and training data. 
+I ran into the same issues going forward. Here is what I tried to run for the Lasso regression:
+```
+
+from sklearn.linear_model import Lasso
+
+a_range = np.linspace(0.001, 0.003, 101)
+
+k = 20
+
+avg_tr_score=[]
+avg_te_score=[]
+
+for a in a_range:
+    las_reg = Lasso(alpha=a)
+    train_scores,test_scores = DoKFold(las_reg,X,Y,k,standardize=True)
+    avg_tr_score.append(np.mean(train_scores))
+    avg_te_score.append(np.mean(test_scores))
+    
+idx = np.argmax(avg_te_score)
+print('Optimal alpha value: ' + format(a_range[idx], '.3f'))
+print('Training score for this value: ' + format(avg_tr_score[idx],'.3f'))
+print('Testing score for this value: ' + format(avg_te_score[idx], '.3f'))
+
+```
+again, I did not create a separate object for the MSE training and testing data. 
+
+I did not get much futher than that because I kept running into the same problems. The session this past Wednesday really helped because you went over exactly how to approach each problem. 
+In my many hours long struggle to try to find answers online to some of the problems I ran into, I did find some useful graphs and charts to produce. I believe we did create a heatmap in class, but one website I looked at was focusing on how to find correlation values. 
+I imported the seaborn library and ran this:
+```
+
+import seaborn as sns
+correlation_matrix = california.corr().round(2)
+# annot = True to print the values inside the square
+sns.heatmap(data=correlation_matrix, annot=True)
+
+```
+This is the heatmap produced:
 
 
 
