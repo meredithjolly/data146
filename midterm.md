@@ -1,12 +1,12 @@
 # Midterm 
-## A. import necessary libraries
+## A. Import necessary libraries
 ```
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
 ```
-## B. create DoKFold
+## B. Create DoKFold
 ```
 
 def DoKFold(model, X, y, k, standardize = False, random_state = 146):
@@ -55,7 +55,7 @@ def DoKFold(model, X, y, k, standardize = False, random_state = 146):
     return train_scores, test_scores, train_mse, test_mse
     
 ```
-## C. import the California Housing Data
+## C. Import the California Housing Data
 ```
 
 from sklearn.datasets import fetch_california_housing as cal_data
@@ -78,7 +78,7 @@ y = data.target
 cal_housing = pd.DataFrame(X, columns = X_names)
 
 ```
-## 15. which of the below features is most strongly correlated with the target?
+## 15. Which of the below features is most strongly correlated with the target?
 MedInc (median income)
 AveRooms (average number of rooms)
 AveBedrms (average number of bedrooms)
@@ -98,7 +98,7 @@ correlations between features and targets
 - HouseAg (average house age) = 0.105623
 ### answer: based on the results above, median income is most strongly correlated with the target. A perfect correlation would be 1, so the closest 1 one is median income (0.69) 
 
-## 16. if the features are standardized, the correlations from the previous question do not change
+## 16. If the features are standardized, the correlations from the previous question do not change
 ```
 from sklearn.preprocessing import StandardScaler as SS 
 ss = SS()
@@ -125,7 +125,7 @@ correlations between standardized features and targets
 
 ### answer: after standardizing the features, the correlations from the previous question did not change
 
-## 17. if we were to perform a linear regression using on the feature identified in question 15 (median income), what would be the coefficient of determination? Enter answer to two decimal places (ex: 0.12).
+## 17. If we were to perform a linear regression using on the feature identified in question 15 (median income), what would be the coefficient of determination? Enter answer to two decimal places (ex: 0.12).
 ```
 
 np.round(np.corrcoef(X_df['MedInc'], y)[0][1]**2, 2)
@@ -133,7 +133,7 @@ np.round(np.corrcoef(X_df['MedInc'], y)[0][1]**2, 2)
 ```
 ### answer: 0.47 
 
-## 18. performing different regression methods on the data
+## 18. Performing different regression methods on the data
 Start with linear regresssion. what is the mean R2 value on the test folds? enter answer to 5 decimal places (ex: 0.12345)
 standardize data
 perform K-fold validation using:
@@ -161,7 +161,7 @@ print(np.mean(train_mse), np.mean(test_mse))
 - training MSE: 0.52423
 - testing MSE: 0.52880
 
-## 19. ridge regression
+## 19. Ridge regression
 Look at 101 equally spaced values between 20 and 30 for alpha. Use same settings for K-fold validation as in previous question. 
 For the optimal value of alpha in this range, what is the mean R2 value on the test folds? Enter answer to 5 decimal places (ex: 0.12345)
 ```
@@ -204,7 +204,7 @@ plt.show()
 - rid_mse_te[idx] = 0.52876
 ![plot](https://meredithjolly.github.io/data146/midterm1.png)
 
-## 20. lasso regression
+## 20. Lasso regression
 Look at 101 equally spaced values between 0.001 and 0.003 for alpha. Use same settings for K-fold validation as in previous question. 
 For the optimal value of alpha in this range, what is the mean R2 value on the test folds? Enter answer to 5 decimal places (ex: 0.12345)
 ```
@@ -245,6 +245,77 @@ plt.show()
 - las_te[idx] = 0.60213 
 - las_mse_tr[idx] = 0.52442
 - las_mse_te[idx] = 0.52860
+![plot](https://meredithjolly.github.io/data146/midterm2.png)
+
+## 21. Refit a linear, ridge and lasso regression to the entire (standardized) dataset
+Which of these models estimates the smallest coefficient for the variable that is least correlated (in terms of absolute value of the correlation coefficient) with the target?
+```
+
+# identify the index number for the variable that is least correlated (average number of bedrooms)
+print(X_names[5])
+
+# create models
+lin = LR()
+rid = Ridge(alpha = 25.8)
+las = Lasso(alpha = 0.00186)
+
+# fit models using transformed features and target
+lin.fit(Xtransform, y)
+rid.fit(Xtransform, y)
+las.fit(Xtransform, y)
+
+# extract coeficcients from each model 
+print(lin.coef_[5])
+print(rid.coef_[5])
+print(las.coef_[5])
+
+```
+### answers:
+- lin.coef_[5] = -0.03933 
+- rid.coef_[5] = -0.03941
+- las.coef_[5] = -0.03762
+
+## 22. Which of the above models estimates the smallest coefficient for the variable that is most correlated (median income)?
+```
+
+#identify index number for variable that is most correlated (median income)
+print(X_names[0])
+
+#extract coefficients from each model
+print(lin.coef_[0])
+print(rid.coef_[0])
+print(las.coef_[0])
+
+```
+### answers: 
+- lin.coef_[0] = 0.82962
+- rid.coef_[0] = 0.82889
+- las.coef_[0] = 0.82001
+
+## 23. If we had looked at MSE instead of R2 when doing Ridge regression (question 19), would we have determined the same optimal value for alpha?
+```
+
+idx = np.argmin(rid_mse_te)
+print(rid_a_range[idx], rid_tr[idx], rid_te[idx], rid_mse_tr[idx], rid_mse_te[idx])
+
+```
+```
+
+plt.plot(rid_a_range, rid_mse_te,'or')
+plt.xlabel('$\\alpha$')
+plt.ylabel('Avg MSE')
+plt.show()
+
+```
+### answers: 
+- rid_a_range[idx] = 26.1
+- rid_tr[idx] = 0.60627
+- rid_te[idx] = 0.60201 
+- rid_mse_tr[idx] = 0.52427
+- rid_mse_te[idx] = 0.52876
+
+
+
 
 
 
