@@ -79,10 +79,7 @@ cal_housing = pd.DataFrame(X, columns = X_names)
 
 ```
 ## 15. which of the below features is most strongly correlated with the target?
-- MedInc (median income)
-- AveRooms (average number of rooms)
-- AveBedrms (average number of bedrooms)
-- HouseAg (average house age)
+MedInc (median income), AveRooms (average number of rooms), AveBedrms (average number of bedrooms), HouseAg (average house age)
 ```
 # create a data frame with all the features as well as the target
 housing_copy = cal_housing.copy()
@@ -91,5 +88,9 @@ housing_copy['y'] = y
 housing_copy.corr()
 
 ```
-
-
+variable correlations with target
+- MedInc (median income) = 0.688075
+- AveRooms (average number of rooms) = 0.151948
+- AveBedrms (average number of bedrooms) = -0.046701
+- HouseAg (average house age) = 0.105623
+### answer: based on the results above, **median income** is most strongly correlated with the target. A perfect correlation would be 1
