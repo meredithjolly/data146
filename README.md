@@ -12,4 +12,5 @@ Welcome to my GitHub page for Data 146
 
 [Project 3](https://meredithjolly.github.io/data146/project3.html)
 
+## Midterm Corrections
 [Midterm](https://meredithjolly.github.io/data146/midterm.html)
