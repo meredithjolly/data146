@@ -179,7 +179,6 @@ rid_te = []
 rid_mse_tr = []
 rid_mse_te = []
 
-# start for loop
 for a in rid_a_range:
     mdl = Ridge(alpha=a)
     train, test, train_mse, test_mse = DoKFold(mdl, X, y, k, True)
@@ -204,6 +203,48 @@ plt.show()
 - rid_mse_tr[idx] = 0.52427
 - rid_mse_te[idx] = 0.52876
 ![plot](https://meredithjolly.github.io/data146/midterm1.png)
+
+## 20. lasso regression
+Look at 101 equally spaced values between 0.001 and 0.003 for alpha. Use same settings for K-fold validation as in previous question. 
+For the optimal value of alpha in this range, what is the mean R2 value on the test folds? Enter answer to 5 decimal places (ex: 0.12345)
+```
+
+from sklearn.linear_model import Ridge, Lasso
+
+#define range
+las_a_range = np.linspace(0.001, 0.003, 101)
+
+# create an object to append calculated mean values from ridge training and testing data
+las_tr = []
+las_te = []
+
+# create an object to append calculated mean MSE values from ridge training and testing data
+las_mse_tr = []
+las_mse_te = []
+
+for a in las_a_range:
+    mdl = Lasso(alpha=a)
+    train, test, train_mse, test_mse = DoKFold(mdl, X, y, k, True)
+    
+    las_tr.append(np.mean(train))
+    las_te.append(np.mean(test))
+    las_mse_tr.append(np.mean(train_mse))
+    las_mse_te.append(np.mean(test_mse))
+
+idx = np.argmax(las_te)
+print(las_a_range[idx], las_tr[idx], las_te[idx], las_mse_tr[idx], las_mse_te[idx])
+plt.plot(las_a_range, las_te, 'or')
+plt.xlabel('$\\alpha$')
+plt.ylabel('Avg $R^2$')
+plt.show()
+
+```
+### answers: 
+- las_a_range[idx] = 0.00186
+- las_tr[idx] = 0.60616
+- las_te[idx] = 0.60213 
+- las_mse_tr[idx] = 0.52442
+- las_mse_te[idx] = 0.52860
 
 
 
