@@ -203,6 +203,7 @@ plt.show()
 - rid_te[idx] = 0.60201 
 - rid_mse_tr[idx] = 0.52427
 - rid_mse_te[idx] = 0.52876
+![plot](https://meredithjolly.github.io/data146/midterm1.png)
 
 
 
