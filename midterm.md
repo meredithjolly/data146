@@ -1,12 +1,12 @@
-### Midterm 
-A. import the libraries you will need 
+# Midterm 
+## A. import the libraries you will need 
 ```
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
 ```
-B. create your DoKFold
+## B. create your DoKFold
 ```
 
 def DoKFold(model, X, y, k, standardize = False, random_state = 146):
@@ -55,6 +55,29 @@ def DoKFold(model, X, y, k, standardize = False, random_state = 146):
     return train_scores, test_scores, train_mse, test_mse
     
 ```
-C. import the California Housing Data
-      
+## C. import the California Housing Data
+```
+
+from sklearn.datasets import fetch_california_housing as cal_data
+data = cal_data()
+
+```
+## D. create dataframe
+```
+
+# set up X as your features from data.data
+X = data.data
+
+# create a names object from data.feature_names
+X_names = data.feature_names
+
+# set up y as your target from data.target
+y = data.target
+
+# use pandas to create a data frame from your features and names object
+cal_housing = pd.DataFrame(X, columns = X_names)
+
+```
+## 15
+
 
