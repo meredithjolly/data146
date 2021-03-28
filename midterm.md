@@ -18,24 +18,15 @@ def DoKFold(model, X, y, k, standardize = False, random_state = 146):
         from sklearn.preprocessing import StandardScaler as SS
         ss = SS()
 
-```
-add an object for your training and testing scores 
-```
-
+    # add an object for training and testing scores
     train_scores = []
     test_scores = []
-
-```
-add an object for your training and testing MSE
-```
-
+    
+    #add an object for training and testing MSE
     train_mse = []
     test_mse = []
-
-```
-add your for loop where you create idxTrain & idxTest using kf.split with your features 
-```
-
+    
+    # for loop to create idxTrain & idxTest using kf.split with features
     for idxTrain, idxTest in kf.split(X):
         Xtrain = X[idxTrain,:]
         Xtest = X[idxTest,:]
@@ -45,50 +36,25 @@ add your for loop where you create idxTrain & idxTest using kf.split with your f
         if standardize:
             Xtrain = ss.fit_transform(Xtrain)
             Xtest = ss.transform(Xtest)
-
-```
-fit your model on this line using your training data 
-```
-
-        model.fit(Xtrain, ytrain)
-
-```
-use your feature and target training data to calculate your model score and append it to the train score object
-```
-
-        train_scores.append(model.score(Xtrain, ytrain))
         
-```
-use your feature and target testing data to calculate your model score and append it to the test score object
-```
-
+        # to fit model using training data
+        model.fit(Xtrain, ytrain)
+        
+        # use feature and target training and testing data to calculate model score and append it to training and testing score object
+        train_scores.append(model.score(Xtrain, ytrain))
         test_scores.append(model.score(Xtest, ytest))
-
-```
-use your model to predict target values with the training and testing data
-```
-
+        
+        # use model to predict target values with training and testing data
         ytrain_pred = model.predict(Xtrain)
         ytest_pred = model.predict(Xtest)
-
-```
-use your target values and predicted target values from the training data to calculate your mean MSE and append them to your training MSE object
-```
-
-        train_mse.append(np.mean((ytrain - ytrain_pred)**2))
-
-```
-use your target values and predicted target values from the testing data to calculate your mean MSE and append them to your testing MSE object
-```
-
-        test_mse.append(np.mean((ytest - ytest_pred)**2))
-
-```
-```
-
-    return train_scores, test_scores, train_mse, test_mse
-
-```
-
-    
         
+        # use target values and predicted target values from training and testing data to calculate MSE and append them to training and testing MSE object
+        train_mse.append(np.mean((ytrain - ytrain_pred)**2))
+        test_mse.append(np.mean((ytest - ytest_pred)**2))
+        
+    return train_scores, test_scores, train_mse, test_mse
+    
+```
+C. import the California Housing Data
+      
+
