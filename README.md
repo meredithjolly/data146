@@ -2,7 +2,7 @@
 
 Welcome to my GitHub page for Data 146
 
-## Informal exercises   
+## Informal Exercises   
 [Informal Exercise 1](https://meredithjolly.github.io/data146/gapminder.html)  
 
 ## Projects  
