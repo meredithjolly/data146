@@ -447,6 +447,7 @@ sns.heatmap(data=correlation_matrix, annot=True)
 
 ```
 This is the heatmap produced:
+![plot](https://meredithjolly.github.io/data146/midterm5.png)
 
 
 
